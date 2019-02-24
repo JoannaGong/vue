@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.6/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="password">
+        <span v-if="password.length > 8">你的密码大于8位啦</span>
+        <span v-else-if="password.length > 0 && password.length < 8">请输入一个更长的密码</span>
+        <span v-else-if="password.length == 0">请输入你的密码</span>
+        
+        <ol>
+            <li v-for="item in lists">{{ item.title }}
+                <ul>
+                    <li v-for="sub in item.subtitle">{{ sub }}</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                password: '',
+                lists: [{
+                    title: 'frontEnd1', subtitle: ["html1", "css1", "javascript1"]
+                },{
+                    title: 'frontEnd2', subtitle: ["html2", "css2", "javascript2"]
+                },{
+                    title: 'frontEnd3', subtitle: ["html3", "css3", "javascript3"]
+                }]
+            }
+        })
+    </script>
+</body>
+</html>
